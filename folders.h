@@ -10,7 +10,11 @@
 #include <QtWidgets>
 #include "root.h"
 #include "mainwindow.h"
+#include <fstream>
+#include <QFileSystemModel>
+#include <string>
 
+using namespace std;
 
 class Folders : public QGraphicsItem{
 public:
@@ -22,6 +26,7 @@ public:
     QRectF boundingRect() const;
     void paint(QPainter *painter,const QStyleOptionGraphicsItem *option, QWidget *widget);
     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event);
+    void mousePressEvent(QGraphicsSceneMouseEvent* event);
 
     //atributos
     QImage* image;

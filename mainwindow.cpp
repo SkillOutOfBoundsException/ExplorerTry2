@@ -49,10 +49,16 @@ void MainWindow::on_treeView_clicked(const QModelIndex &index){
 }
 
 void MainWindow::on_pushButton_3_released(){
+
     extern Root* rip;
     if(rip->getBackDir() == NULL)
         return;
     rip->setDir(rip->getBackDir());
     rip->refresh();
     ui->label->setText(rip->getBackDir()->absolutePath());
+}
+
+QPlainTextEdit* MainWindow::getPreviewTxt()
+{
+    return ui->previewTxt;
 }

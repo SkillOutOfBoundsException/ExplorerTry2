@@ -1,5 +1,6 @@
 #include "folders.h"
 #include <QFontDatabase>
+#include <fstream>
 
 //CAMBIAR LA VARIABLE PA CON EL ROOT DEL PROYECTO ANTES DE CORRER
 
@@ -51,6 +52,22 @@ void Folders::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event){
     else{
         rip->setDir(info.absoluteFilePath());
         rip->refresh();
+    }
+}
+
+void Folders::mousePressEvent(QGraphicsSceneMouseEvent *event){
+    if (!info.isDir()){
+        if (info.fileName().contains(".txt")){
+            ifstream myFile(info.absolutePath().toStdString());
+            string line;
+            if (myFile.is_open()){
+                while (getline(myFile,line)){
+                   MainWindow* mw = new MainWindow();
+                   QString l = QString::fromStdString(line);
+                   mw->getPreviewTxt()->appendPlainText(l);
+                }
+            }
+        }
     }
 }
 

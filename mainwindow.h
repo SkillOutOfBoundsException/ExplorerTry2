@@ -26,10 +26,12 @@ public:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     QFileSystemModel* model;
+    QPlainTextEdit* getPreviewTxt();
 
 private slots:
     void on_treeView_clicked(const QModelIndex &index);
     void on_pushButton_3_released();
+    void on_previewTxt_destroyed();
 };
 
 #endif // MAINWINDOW_H

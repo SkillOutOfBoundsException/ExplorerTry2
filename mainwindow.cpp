@@ -29,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     rip->setScene(scene);
     rip->setView(ui->graphicsView);
+    rip->setLabel(ui->label);
     rip->paintFolders();
 
 
@@ -45,7 +46,6 @@ void MainWindow::on_treeView_clicked(const QModelIndex &index){
     extern Root* rip;
     rip->setDir(path);
     rip->refresh();
-    ui->label->setText(path);
 }
 
 void MainWindow::on_pushButton_3_released(){
@@ -54,5 +54,39 @@ void MainWindow::on_pushButton_3_released(){
         return;
     rip->setDir(rip->getBackDir());
     rip->refresh();
-    ui->label->setText(rip->getBackDir()->absolutePath());
+}
+
+void MainWindow::on_pushButton_2_released(){
+    bool ok;
+    QString text = QInputDialog::getText(this, tr("New text file"), tr("File name:"), QLineEdit::Normal, "filename", &ok);
+    if (!ok || text.isEmpty())
+        return;
+    text = ui->label->text() + "/" + text + ".txt";
+
+    QFile f(text);
+    if(!f.exists()){
+        qDebug() << f.fileName();
+        f.open(QIODevice::ReadWrite);
+        f.close();
+    }
+    extern Root* rip;
+    rip->setDir(ui->label->text());
+    rip->refresh();
+}
+
+void MainWindow::on_pushButton_released(){
+    bool ok;
+    QString text = QInputDialog::getText(this, tr("New folder"), tr("Folder name:"), QLineEdit::Normal, "filename", &ok);
+    if (!ok || text.isEmpty())
+        return;
+    QString path = ui->label->text() + "/" + text;
+    QDir* newDir = new QDir(path);
+    if(!newDir->exists()){
+        QDir* dir = new QDir(ui->label->text());
+        dir->mkdir(text);
+    }
+    extern Root* rip;
+    rip->setDir(ui->label->text());
+    rip->refresh();
+
 }

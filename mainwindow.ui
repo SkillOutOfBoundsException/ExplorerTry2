@@ -85,7 +85,7 @@
      </font>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>New Folder</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_2">
@@ -103,7 +103,7 @@
      </font>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>New File</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_3">

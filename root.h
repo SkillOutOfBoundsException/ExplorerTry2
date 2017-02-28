@@ -30,6 +30,7 @@ public:
 
     void setScene(QGraphicsScene* x);   //configura la escena
     void setView(QGraphicsView* x);     //configura la QGraphicsView
+    void setLabel(QLabel* x);
 
 private:
     void addFile(FileParent*);          //agrega una file a la lista
@@ -41,6 +42,7 @@ private:
     //atributos
     QGraphicsScene* scene;
     QGraphicsView* view;
+    QLabel* label;
     FileParent* head;
     FileParent* tail;
     int cant;

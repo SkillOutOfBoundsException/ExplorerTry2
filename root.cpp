@@ -29,6 +29,7 @@ void Root::refresh(){
     view->viewport()->update();
     fillList();
     paintFolders();
+    label->setText(rootDir->absolutePath());
 }
 
 void Root::fillList(){
@@ -89,6 +90,10 @@ void Root::setScene(QGraphicsScene* x){
 
 void Root::setView(QGraphicsView *x){
     view = x;
+}
+
+void Root::setLabel(QLabel *x){
+    label = x;
 }
 
 QDir* Root::getRootDir(){

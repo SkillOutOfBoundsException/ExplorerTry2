@@ -5,7 +5,7 @@
 
 Folders::Folders(QFileInfo i, int x, int y){
     info = i;
-    QString pa = "C:\\Users\\Diegu7-CB1\\Documents\\C++\\ExplorerTry2\\";
+    QString pa = "C:\\Users\\Diegu7\\C++Things\\ExplorerTry2-master\\ExplorerTry2\\";
     QString th = "archivo2.png";
     if(info.fileName().contains(".txt"))
         th = "txt2.png";
@@ -41,7 +41,7 @@ void Folders::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
     QFont* font = new QFont("Times [Adobe]", 10, -1, false);
     painter->setFont(*font);
     painter->drawImage(rec, *image, QRectF(0,0,100,150));
-    painter->drawText(QRectF(posx,posy + 100,100, 50), /*Qt::AlignBottom | */Qt::AlignCenter | Qt::TextWordWrap | Qt::TextDontClip, info.fileName());
+    painter->drawText(QRectF(posx,posy + 90,100, 50), Qt::AlignCenter | Qt::TextWordWrap | Qt::TextDontClip, info.fileName());
 }
 
 void Folders::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event){

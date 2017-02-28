@@ -8,15 +8,15 @@ Root::Root(QString x){
 void Root::paintFolders(){
     scene->clear();
     FileParent* temp = head;
-    int posx = 0;
+    int posx = -130;
     int posy = 0;
     while(temp != 0){
-        scene->addItem(new Folders(temp->info, posx, posy));
         posx = posx + 130;
         if(posx >= 530){
             posx = 0;
             posy = posy + 150;
         }
+        scene->addItem(new Folders(temp->info, posx, posy));
         temp = temp->getSig();
     }
     posy = (posy <= 300) ? 510 : posy + 150;

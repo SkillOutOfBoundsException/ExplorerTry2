@@ -3,7 +3,8 @@
 
 //CAMBIAR LA VARIABLE PA CON EL ROOT DEL PROYECTO ANTES DE CORRER
 
-Folders::Folders(QFileInfo i, int x, int y){
+Folders::Folders(FileParent* f, QFileInfo i, int x, int y){
+    file = f;
     info = i;
     QString pa = "C:\\Users\\Diegu7-CB1\\Documents\\C++\\ExplorerTry2\\";
     QString th = "archivo2.png";
@@ -25,11 +26,11 @@ Folders::Folders(QFileInfo i, int x, int y){
         th = "exe.png";
     else if(info.isDir())
         th = "folder.png";
-
     QString path = pa + th;
     image = new QImage(path);
     posx = x;
     posy = y;
+    selected = false;
 }
 
 QRectF Folders::boundingRect() const{
@@ -52,6 +53,11 @@ void Folders::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event){
         rip->setDir(info.absoluteFilePath());
         rip->refresh();
     }
+}
+
+void Folders::mousePressEvent(QGraphicsSceneEvent *event){
+    selected = true;
+
 }
 
 

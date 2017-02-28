@@ -9,6 +9,7 @@
 #include <QMainWindow>
 #include <QtWidgets>
 #include "root.h"
+#include "fileparent.h"
 #include "mainwindow.h"
 
 
@@ -16,18 +17,21 @@ class Folders : public QGraphicsItem{
 public:
 
     //constructor que pide la info del folder y la pos x  y pos y donde se dibuja
-    Folders(QFileInfo i, int posx, int posy);
+    Folders(FileParent* f, QFileInfo i, int posx, int posy);
 
     //estas dos funciones no se pueden dejar de escribir porque son abstractas de QGraphicsItem, la otra es el double click event
     QRectF boundingRect() const;
     void paint(QPainter *painter,const QStyleOptionGraphicsItem *option, QWidget *widget);
     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event);
+    void mousePressEvent(QGraphicsSceneEvent* event);
 
     //atributos
+    FileParent* file;
     QImage* image;
     QFileInfo info;
     int posy;
     int posx;
+    bool selected;
 };
 
 #endif // FOLDERS_H

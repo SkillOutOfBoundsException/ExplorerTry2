@@ -12,7 +12,7 @@ void Root::paintFolders(){
     int posx = 0;
     int posy = 0;
     while(temp != 0){
-        scene->addItem(new Folders(temp->info, posx, posy));
+        scene->addItem(new Folders(temp, temp->info, posx, posy));
         posx = posx + 130;
         if(posx >= 530){
             posx = 0;

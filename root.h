@@ -24,6 +24,7 @@ public:
     void printList();                   //imprime la lista en el qDebug()
     void paintFolders();                //pinta los folders en la escena
     void refresh();                     //rellena la lista y pinta la escena
+    void selectedFalse();               //deselecciona a todos los botones
 
     void setDir(QString);               //configura el root dir
     void setDir(QDir*);                 //configura el root dir

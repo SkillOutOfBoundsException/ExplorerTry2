@@ -7,6 +7,7 @@
 #include <QFileInfoList>
 #include <QDebug>
 #include <QtCore>
+#include <QVector>
 #include <QGraphicsScene>
 #include "fileparent.h"'
 #include "folders.h"
@@ -32,6 +33,8 @@ public:
     void setView(QGraphicsView* x);     //configura la QGraphicsView
     void setLabel(QLabel* x);
 
+    QVector<QDir*> dirs;                //vector que incluye todas las dirs visitadas
+
 private:
     void addFile(FileParent*);          //agrega una file a la lista
 
@@ -47,7 +50,6 @@ private:
     FileParent* tail;
     int cant;
     QDir* rootDir;
-    QDir* backDir;
 };
 
 #endif // ROOT_H

@@ -3,7 +3,6 @@
 Root::Root(QString x){
     setDir(x);
     fillList();
-    backDir = 0;
 }
 
 void Root::paintFolders(){
@@ -75,12 +74,14 @@ void Root::setTail(FileParent* x){
 
 void Root::setDir(QString path){
     QDir* x = new QDir(path);
-    backDir = rootDir;
+    if(dirs.isEmpty() || dirs.last() != x)
+        dirs.push_back(x);
     rootDir = x;
 }
 
 void Root::setDir(QDir * x){
-    backDir = rootDir;
+    if(dirs.last() != x)
+        dirs.push_back(x);
     rootDir = x;
 }
 
@@ -98,8 +99,4 @@ void Root::setLabel(QLabel *x){
 
 QDir* Root::getRootDir(){
     return rootDir;
-}
-
-QDir* Root::getBackDir(){
-    return backDir;
 }

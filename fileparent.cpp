@@ -5,6 +5,7 @@ FileParent::FileParent(QFileInfo i){
     setSig(0);
     setDir(i.filePath());
     info = i;
+    selected = false;
 }
 
 FileParent* FileParent::getSig(){

@@ -18,12 +18,12 @@ public:
     FileParent* getSig();           //getter
     void setSig(FileParent* s);     //set siguiente nodo
     QFileInfo info;                 //se guarda el info
+    bool selected;                  //is selected
 
 private:
     FileParent* next;               //sguiente nodo
     void setDir(QString path);      //set directorio
     QDir* dir;                      //directorio
-
 };
 
 #endif // FILEPARENT_H

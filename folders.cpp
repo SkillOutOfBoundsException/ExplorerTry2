@@ -30,18 +30,21 @@ Folders::Folders(FileParent* f, QFileInfo i, int x, int y){
     image = new QImage(path);
     posx = x;
     posy = y;
-    selected = false;
 }
 
 QRectF Folders::boundingRect() const{
-    return QRectF(posx,posy,100,150);
+    return QRectF(posx-10,posy,120,150);
 }
 
 void Folders::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
     QRectF rec = boundingRect();
     QFont* font = new QFont("Times [Adobe]", 10, -1, false);
     painter->setFont(*font);
-    painter->drawImage(rec, *image, QRectF(0,0,100,150));
+    if(file->selected){
+        QColor color(229,241,251);
+        painter->fillRect(QRectF(posx-10,posy,120,145), color);
+    }
+    painter->drawImage(QRectF(posx,posy,100,150), *image, QRectF(0,0,100,150));
     painter->drawText(QRectF(posx,posy + 100,100, 50), /*Qt::AlignBottom | */Qt::AlignCenter | Qt::TextWordWrap | Qt::TextDontClip, info.fileName());
 }
 
@@ -55,9 +58,11 @@ void Folders::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event){
     }
 }
 
-void Folders::mousePressEvent(QGraphicsSceneEvent *event){
-    selected = true;
-
+void Folders::mousePressEvent(QGraphicsSceneMouseEvent *event){
+    extern Root* rip;
+    rip->selectedFalse();
+    file->selected = true;
+    update();
 }
 
 

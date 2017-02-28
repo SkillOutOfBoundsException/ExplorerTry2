@@ -31,6 +31,14 @@ void Root::refresh(){
     paintFolders();
 }
 
+void Root::selectedFalse(){
+    FileParent* temp = head;
+    while(temp != NULL){
+        temp->selected = false;
+        temp = temp->getSig();
+    }
+}
+
 void Root::fillList(){
     cant = 0;
     setHead(0);

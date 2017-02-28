@@ -23,7 +23,7 @@ public:
     QRectF boundingRect() const;
     void paint(QPainter *painter,const QStyleOptionGraphicsItem *option, QWidget *widget);
     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event);
-    void mousePressEvent(QGraphicsSceneEvent* event);
+    void mousePressEvent(QGraphicsSceneMouseEvent* event);
 
     //atributos
     FileParent* file;
@@ -31,7 +31,6 @@ public:
     QFileInfo info;
     int posy;
     int posx;
-    bool selected;
 };
 
 #endif // FOLDERS_H

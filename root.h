@@ -8,7 +8,7 @@
 #include <QDebug>
 #include <QtCore>
 #include <QGraphicsScene>
-#include "fileparent.h"'
+#include "fileparent.h"
 #include "folders.h"
 
 //Root es la lista que maneja la clase Fileparent

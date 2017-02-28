@@ -50,9 +50,10 @@ void MainWindow::on_treeView_clicked(const QModelIndex &index){
 
 void MainWindow::on_pushButton_3_released(){
     extern Root* rip;
-    if(rip->getBackDir() == NULL)
+    if(rip->dirs.size() == 1)
         return;
-    rip->setDir(rip->getBackDir());
+    rip->dirs.pop_back();
+    rip->setDir(rip->dirs.last());
     rip->refresh();
 }
 
@@ -62,7 +63,6 @@ void MainWindow::on_pushButton_2_released(){
     if (!ok || text.isEmpty())
         return;
     text = ui->label->text() + "/" + text + ".txt";
-
     QFile f(text);
     if(!f.exists()){
         qDebug() << f.fileName();
@@ -88,5 +88,4 @@ void MainWindow::on_pushButton_released(){
     extern Root* rip;
     rip->setDir(ui->label->text());
     rip->refresh();
-
 }

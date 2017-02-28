@@ -1,9 +1,11 @@
 #include "folders.h"
 #include <QFontDatabase>
 
+//CAMBIAR LA VARIABLE PA CON EL ROOT DEL PROYECTO ANTES DE CORRER
+
 Folders::Folders(QFileInfo i, int x, int y){
     info = i;
-    QString pa = "C:\\Users\\Diegu7\\C++Things\\ExplorerTry2\\";
+    QString pa = "C:\\Users\\Diegu7-CB1\\Documents\\C++\\ExplorerTry2\\";
     QString th = "archivo2.png";
     if(info.fileName().contains(".txt"))
         th = "txt2.png";
@@ -19,7 +21,7 @@ Folders::Folders(QFileInfo i, int x, int y){
         th = "dll.png";
     else if(info.fileName().contains(".mp3") || info.fileName().contains(".wav") || info.fileName().contains(".acc") || info.fileName().contains(".flac") || info.fileName().contains(".ogg"))
         th = "music.png";
-    else if(info.fileName().contains(".exe") || info.fileName().contains(".msi") || info.fileName().contains(".lnk"))
+    else if(info.fileName().contains(".exe") || info.fileName().contains(".msi") || info.fileName().contains(".lnk") || info.fileName().contains(".appref-ms"))
         th = "exe.png";
     else if(info.isDir())
         th = "folder.png";
@@ -28,7 +30,6 @@ Folders::Folders(QFileInfo i, int x, int y){
     image = new QImage(path);
     posx = x;
     posy = y;
-    selected = false;
 }
 
 QRectF Folders::boundingRect() const{
@@ -51,8 +52,6 @@ void Folders::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event){
         rip->setDir(info.absoluteFilePath());
         rip->refresh();
     }
-    //mui->update();
-
 }
 
 

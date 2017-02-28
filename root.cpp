@@ -20,12 +20,13 @@ void Root::paintFolders(){
         }
         temp = temp->getSig();
     }
-    if(posy < 520)
-        posy = 520;
+    posy = (posy <= 300) ? 510 : posy + 150;
     scene->setSceneRect(0, 0, 620, posy);
 }
 
 void Root::refresh(){
+    scene->clear();
+    view->viewport()->update();
     fillList();
     paintFolders();
 }
@@ -86,12 +87,8 @@ void Root::setScene(QGraphicsScene* x){
     scene = x;
 }
 
-FileParent* Root::getHead(){
-    return head;
-}
-
-FileParent* Root::getTail(){
-    return tail;
+void Root::setView(QGraphicsView *x){
+    view = x;
 }
 
 QDir* Root::getRootDir(){

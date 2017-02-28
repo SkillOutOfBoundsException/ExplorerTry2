@@ -18,8 +18,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->treeView->setModel(model);
     ui->label->setText(path);
 
-
-
     QModelIndex index = model->index(path);
 
     ui->treeView->expand(index);
@@ -30,8 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     extern Root* rip;
 
     rip->setScene(scene);
-
-    rip->printList();
+    rip->setView(ui->graphicsView);
     rip->paintFolders();
 
 
@@ -43,11 +40,8 @@ MainWindow::~MainWindow(){
     delete ui;
 }
 
-void MainWindow::on_treeView_clicked(const QModelIndex &index){
-    scene->clear();
-    ui->graphicsView->viewport()->update();
+void MainWindow::on_treeView_clicked(const QModelIndex &index){    
     QString path = model->fileInfo(index).absoluteFilePath();
-    qDebug() << path;
     extern Root* rip;
     rip->setDir(path);
     rip->refresh();
@@ -55,13 +49,10 @@ void MainWindow::on_treeView_clicked(const QModelIndex &index){
 }
 
 void MainWindow::on_pushButton_3_released(){
-    scene->clear();
-    ui->graphicsView->viewport()->update();
     extern Root* rip;
     if(rip->getBackDir() == NULL)
         return;
     rip->setDir(rip->getBackDir());
     rip->refresh();
     ui->label->setText(rip->getBackDir()->absolutePath());
-
 }

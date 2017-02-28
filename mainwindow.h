@@ -9,6 +9,8 @@
 #include <QtWidgets>
 #include "root.h"
 
+//mainwindow
+
 namespace Ui {
     class MainWindow;
 }

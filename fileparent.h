@@ -8,19 +8,21 @@
 #include <QtCore>
 #include <QDebug>
 
+//Clase nodo, esta clase va a ser manejada por la clase Root
+
 class FileParent{
 
 public:
-    FileParent(QFileInfo i);
-    QDir* getDir();
-    FileParent* getSig();
-    void setSig(FileParent* s);
-    QFileInfo info;
+    FileParent(QFileInfo i);        //Constructor que pide el info de un archivo
+    QDir* getDir();                 //getter
+    FileParent* getSig();           //getter
+    void setSig(FileParent* s);     //set siguiente nodo
+    QFileInfo info;                 //se guarda el info
 
-protected:
-    FileParent* next;
-    void setDir(QString path);
-    QDir* dir;
+private:
+    FileParent* next;               //sguiente nodo
+    void setDir(QString path);      //set directorio
+    QDir* dir;                      //directorio
 
 };
 

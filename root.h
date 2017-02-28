@@ -11,32 +11,36 @@
 #include "fileparent.h"'
 #include "folders.h"
 
+//Root es la lista que maneja la clase Fileparent
+
 class Root{
 
 public:
-    Root(QString);
-    FileParent* getHead();
-    FileParent* getTail();
-    QDir* getRootDir();
-    QDir* getBackDir();
-    void addFile(FileParent*);
-    void fillList();
-    void printList();
-    void paintFolders();
-    void refresh();
+    Root(QString);                      //constructor que pide el path del folder que se va a abrir
+    QDir* getRootDir();                 //getter
+    QDir* getBackDir();                 //getter
 
-    void setDir(QString);
-    void setDir(QDir*);
+    void fillList();                    //llena la lista
+    void printList();                   //imprime la lista en el qDebug()
+    void paintFolders();                //pinta los folders en la escena
+    void refresh();                     //rellena la lista y pinta la escena
 
-    void setScene(QGraphicsScene* x);
+    void setDir(QString);               //configura el root dir
+    void setDir(QDir*);                 //configura el root dir
+
+    void setScene(QGraphicsScene* x);   //configura la escena
+    void setView(QGraphicsView* x);     //configura la QGraphicsView
 
 private:
-    void setHead(FileParent*);
-    void setTail(FileParent*);
+    void addFile(FileParent*);          //agrega una file a la lista
+
+    void setHead(FileParent*);          //configura la cabeza
+    void setTail(FileParent*);          //configura la cola
 
 
-
+    //atributos
     QGraphicsScene* scene;
+    QGraphicsView* view;
     FileParent* head;
     FileParent* tail;
     int cant;

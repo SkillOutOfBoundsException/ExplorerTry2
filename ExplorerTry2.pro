@@ -27,13 +27,11 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     fileparent.cpp \
     root.cpp \
-    directory.cpp \
     folders.cpp
 
 HEADERS  += mainwindow.h \
     fileparent.h \
     root.h \
-    directory.h \
     folders.h
 
 FORMS    += mainwindow.ui
